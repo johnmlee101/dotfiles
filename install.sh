@@ -39,6 +39,17 @@ for file in $files; do
 	ln -s $dir/$file ~/.$file
 done
 
+# simlink sublime preferences
+read -p "Do you want to update sublime preferences? (Mac only) y/n: " -n 1 -r
+echo "\n"
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo "\n$CYAN Creating symlink for sublime preferences\n"
+	mkdir -p "/Users/$USER/Library/Application Support/Sublime Text 3/Packages/User"
+	ln -s "$dir/sublime/Preferences.sublime-settings" "/Users/$USER/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
+fi
+
+
 #also move vim folder just in case, no need to link 
 mv ~/.vim $olddir 2>/dev/null
 
