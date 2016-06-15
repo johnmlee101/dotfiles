@@ -1,0 +1,47 @@
+[user]
+	name = John Lee
+[github]
+	user = johnmlee101
+[alias]
+	ap = add -p
+	st = stash
+	cv = commit -v
+	cva = commit -v --amend
+	cc = commit -v --amend -CHEAD
+	dc = diff --cached
+	lg = log --graph --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+	lp = log -p
+	sl = stash list
+	conflict = diff --name-only --diff-filter=U
+	conflicts = diff --name-only --diff-filter=U
+	pm = pull --rebase origin master
+	dm = diff master
+	db = branch -d
+	dbf = branch -D
+	rh = reset --hard HEAD
+	co = checkout
+	cb = checkout -b
+	ri = rebase -i
+	cp = cherry-pick
+	sp = stash pop
+	bg = bisect good
+	bb = bisect bad
+	ss = stash save
+	fo = fetch origin
+	pb = "!f() { git pull -u ${1:-origin} `git symbolic-ref HEAD`; }; f"
+	foc = "!f() { git fetch origin $1; git co $1; }; f"
+	np = !git --no-pager
+	da = !git branch --merged | grep -v "\\*" | xargs -n 1 git branch -d
+	au = add -u
+
+	#typos
+	dif = diff
+	difff = diff
+	shoe = git show
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = black bold 52
+	newNormal = green bold
+	newHighlight = white bold 22
