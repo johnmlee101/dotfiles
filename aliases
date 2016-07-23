@@ -114,5 +114,6 @@ function extract {
   fi
 }
 alias x="extract"
-alias napOff="defaults write NSGlobalDomain NSAppSleepDisabled -bool YES"
 alias napOn="defaults delete NSGlobalDomain NSAppSleepDisabled"
+alias napOff="defaults write NSGlobalDomain NSAppSleepDisabled -bool YES"
+alias tetris='emacs -q --no-splash -f tetris'

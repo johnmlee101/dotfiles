@@ -41,3 +41,21 @@ bindkey '^Z' fancy-ctrl-z
 
 source ~/.aliases
 source ~/.local_shellrc
+
+
+push(){
+	branch=`git rev-parse --abbrev-ref HEAD`
+	if [ $branch '==' 'master' ]; then
+		echo "DO NOT PUSH TO MASTER"
+	else
+		git push origin $branch
+	fi
+}
+
+pr(){
+    remote=`git remote -v | grep origin | head -1 | awk '{print $2}' | sed 's/.*:\(.*\)*/\1/' | sed 's/\.git$//'`
+	branch=`git rev-parse --abbrev-ref HEAD`
+	open "https://github.com/$remote/compare/${1:-master}...$branch?expand=1"
+}
+
+export PATH=$PATH:~/bin
