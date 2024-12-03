@@ -3,7 +3,7 @@
 ################################################
 
 # Remember platform
-platform=$(uname)    
+platform=$(uname)
 
 # Easy edits to bash/zsh files
 alias bashrc="vim ~/.bashrc; source ~/.bashrc"
@@ -49,7 +49,7 @@ alias t="tnew"
 
 
 # git things
-alias gadd="git add"
+alias gadd="git add -p"
 alias gs="git status"
 alias gpull="git pull"
 alias gpush="git push"
@@ -58,11 +58,11 @@ alias gtrack="git update-index --no-assume-unchanged"
 alias grekt="git reset --hard HEAD"
 
 gcom () {
-    git commit -am $1
+    git commit -m $1
 }
 
 gita () {
-  git add *; git commit -m $1; sleep 1; git push;
+  git add -p; git commit -m $1; sleep 1; git push;
 }
 
 if [[ $platform == 'Linux' ]]; then
@@ -114,6 +114,47 @@ function extract {
   fi
 }
 alias x="extract"
+alias bastion1="ssh bastion1.sjc"
 alias napOn="defaults delete NSGlobalDomain NSAppSleepDisabled"
 alias napOff="defaults write NSGlobalDomain NSAppSleepDisabled -bool YES"
 alias tetris='emacs -q --no-splash -f tetris'
+alias home="ssh john@67.188.210.33"
+alias proxyOn="sh ~/Documents/proxy.sh on john@sf.molee.me"
+alias proxyOff="sh ~/Documents/proxy.sh off"
+alias subl="sublime ."
+alias dev="cd ~/Expensidev"
+alias web="cd ~/Expensidev/Web-Expensify"
+alias scraper="cd ~/Expensidev/Server-Scraper"
+alias secure="cd ~/Expensidev/Web-Secure"
+alias scraperIntTest="scraper && ./vendor/bin/phpunit _tests/integration/ -c _tests/phpunit.xml 2>/dev/null"
+alias scraperUnitTest="scraper && ./vendor/bin/phpunit _tests/unit/ -c _tests/phpunit.xml 2>/dev/null"
+alias webUnitTest="web && ./vendor/bin/phpunit _tests/unit/ -c _tests/unit/phpunit.xml 2>/dev/null"
+alias webIntTest="vagrant ssh -c 'cd /vagrant/Web-Expensify && ./vendor/bin/phpunit _tests/integration/ -c _tests/unit/phpunit.xml  2>/dev/null'"
+alias marbleerDB="ssh 'john@192.241.238.178'"
+alias marbleerWEB="ssh 'john@107.170.232.145'"
+
+phpfix () {
+	/Users/john/ExpensiDev/Server-Scraper/_tools/cli/php-cs-fixer fix $1
+}
+
+alias tm="sh ~/tmux_launch.sh"
+alias fabup="cd ~/Expensidev/Ops-Configs/saltfab; source venv/bin/activate";
+alias fabe="fab -u john"
+
+post() {
+   curl -d \
+   $2 -H "Content-Type: application/json" \
+   -X POST \
+   $1
+}
+
+get() {
+   curl $1
+}
+
+coFork() {
+  local head_ref=$(gh api -H "Accept: application/vnd.github+json" /repos/Expensify/App/pulls/$1 | jq -r '.head.ref')
+
+  git fetch origin pull/$1/head:$head_ref
+  git checkout $head_ref
+}

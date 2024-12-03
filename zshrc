@@ -58,4 +58,26 @@ pr(){
 	open "https://github.com/$remote/compare/${1:-master}...$branch?expand=1"
 }
 
+alias sshtun='ssh -At -t bastion1.sc ssh -A'
 export PATH=$PATH:~/bin
+
+
+#bindkey -e
+bindkey "b" backward-word
+bindkey "f" forward-word
+
+export PATH=$PATH:$HOME/Documents/bin
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+export PATH="~/Downloads/terraform@0.13/bin:$PATH"
+export BASTION_USER="john"
+export SALTFAB_DIR=~/Ops-configs/saltfab

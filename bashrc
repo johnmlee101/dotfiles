@@ -40,3 +40,7 @@ source ~/.local_shellrc
  export PS1="\n\[\e[0;31m\]\u\[\e[0m\] at \[\e[0;33m\]\h\[\e[0m\] in \[\e[0;36m\]\w\[\e[0m\] \[\e[0;32m\]\n>>\[\e[0m\] "
 # color escapes must be like
 # \[\e[0;33m\] (red) and \[\e[0m\] (clear)
+
+
+# added by travis gem
+[ ! -s /Users/john/.travis/travis.sh ] || source /Users/john/.travis/travis.sh

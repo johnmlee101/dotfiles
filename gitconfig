@@ -1,5 +1,7 @@
 [user]
 	name = John Lee
+	email = john@expensify.com
+	signingkey = BE53E190ACA654A6
 [github]
 	user = johnmlee101
 [alias]
@@ -38,10 +40,23 @@
 	dif = diff
 	difff = diff
 	shoe = git show
+	xdsf = !"git -c interactive.diffFilter='less --tabs=4 -RFX' \"$@\" # Don't use DSF"
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = /Users/johnlee/.gitignore_global
+	precomposeUnicode = true
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = black bold 52
 	newNormal = green bold
 	newHighlight = white bold 22
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[commit]
+	gpgsign = true
+[rerere]
+	enabled = 1
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
